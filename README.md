@@ -291,8 +291,8 @@ AGENT_BASE_URL=http://localhost:8000
 # Create virtual environment
 python -m venv .venv
 
-# Activate (Windows PowerShell)
-.\.venv\Scripts\Activate.ps1
+# Activate
+.\.venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
