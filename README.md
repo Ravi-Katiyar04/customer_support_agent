@@ -29,8 +29,12 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 
-3. Frontend (optional)
-- The frontend is a minimal scaffold. Use `npm install` and `npm run dev` after editing as needed.
+3. Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ## Docker (local)
 ```bash
