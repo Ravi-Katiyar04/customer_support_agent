@@ -1,0 +1,68 @@
+{
+  "eval_set_id": "esa_integration_suite",
+  "eval_cases": [
+    {
+      "eval_id": "product_query_basic",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [
+              {
+                "text": "Tell me about the iPhone 15 Pro"
+              }
+            ]
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "iPhone 15 Pro"
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "product_catalog_lookup",
+                "args": {
+                  "product_name": "iPhone 15 Pro"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "refund_small_auto",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [
+              {
+                "text": "I want a refund for order ORD-002 of $50"
+              }
+            ]
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Refund approved"
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "request_refund",
+                "args": {
+                  "order_id": "ORD-002",
+                  "amount": 50
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
