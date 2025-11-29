@@ -17,6 +17,8 @@ This repository is a starter scaffold for the ESA capstone project based on Goog
 1. Set your environment variables (do NOT commit keys):
    - `GOOGLE_API_KEY` - your Gemini/Google API key
    - `SESSION_DB_URL` - e.g. `sqlite:///esa_sessions.db` (optional)
+   - `A2A_API_KEY` - your api key secret e.g. `my_super_secret_key`
+   - `AGENT_BASE_URL` - http://localhost:8000
 
 2. Backend (Python 3.11+)
 ```bash
