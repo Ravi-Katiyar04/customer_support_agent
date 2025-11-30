@@ -1,10 +1,20 @@
 
+# fastapi
+# uvicorn
+# python-dotenv
+# adk
+# google-adk
+# google-genai
+# google-cloud-aiplatform
+# pydantic
+# requests
+
 fastapi
 uvicorn
 python-dotenv
-adk
-google-adk
-google-genai
-google-cloud-aiplatform
 pydantic
 requests
+google-cloud-aiplatform
+aiohttp
+# ADK is installed separately from GitHub
+

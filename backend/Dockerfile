@@ -16,32 +16,28 @@
 
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
-
 FROM python:3.11-slim
 
-# Avoid Python buffering
 ENV PYTHONUNBUFFERED=1
 
-# Install OS dependencies
-RUN apt-get update && apt-get install -y build-essential
+# OS dependencies
+RUN apt-get update && apt-get install -y build-essential git
 
 WORKDIR /app
 
-# Copy requirements first
+# Copy requirements and install
 COPY requirements.txt .
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install ADK
+# Install ADK from GitHub
 RUN pip install git+https://github.com/openai/adk-python.git
 
-
-# Copy backend files
+# Copy backend code
 COPY . .
 
-# Expose ADK FastAPI runtime port
+# Expose port
 EXPOSE 8000
 
-# ADK runtime command
+# Run ADK server
 CMD ["adk", "serve", "--config", "agent.yml", "--host", "0.0.0.0", "--port", "8000"]
-
-
