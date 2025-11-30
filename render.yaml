@@ -1,6 +1,6 @@
 services:
-  # FRONTEND (Static Deploy but using web_service)
-  - type: web_service
+  # FRONTEND (Static Site)
+  - type: static_site
     name: customer-support-frontend
     repo: https://github.com/Ravi-Katiyar04/customer_support_agent
     branch: main
@@ -8,17 +8,16 @@ services:
     publishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
-        sync: false   # You will set backend URL after backend deploy
+        sync: false   # Set backend URL later
 
-  # BACKEND (ADK Agent Runtime)
-  - type: web_service
+  # BACKEND (Docker-based API)
+  - type: service
     name: customer-support-backend
     repo: https://github.com/Ravi-Katiyar04/customer_support_agent
     branch: main
-    docker:
-      dockerfilePath: backend/Dockerfile
+    dockerfilePath: backend/Dockerfile
     envVars:
       - key: DB_URL
         value: sqlite+aiosqlite:///tmp/database.db
       - key: OPENAI_API_KEY
-        sync: false   # Add your OpenAI API key in Render dashboard
+        sync: false
