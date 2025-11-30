@@ -1,6 +1,6 @@
 services:
-  # FRONTEND (Static Site)
-  - type: static_site
+  # FRONTEND (Static Deploy but using web_service)
+  - type: web_service
     name: customer-support-frontend
     repo: https://github.com/Ravi-Katiyar04/customer_support_agent
     branch: main
