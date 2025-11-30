@@ -16,12 +16,14 @@
 
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
+
+# Base image
 FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1
 
-# OS dependencies
-RUN apt-get update && apt-get install -y build-essential git
+# Install OS dependencies including git for ADK install
+RUN apt-get update && apt-get install -y build-essential git && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -30,14 +32,24 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install ADK from GitHub
+# Install OpenAI ADK from GitHub
 RUN pip install git+https://github.com/openai/adk-python.git
 
-# Copy backend code
+# Copy backend files
 COPY . .
 
-# Expose port
+# Expose FastAPI port
 EXPOSE 8000
+
+# Add CORS middleware to main.py (if not already)
+# from fastapi.middleware.cors import CORSMiddleware
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"], 
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 # Run ADK server
 CMD ["adk", "serve", "--config", "agent.yml", "--host", "0.0.0.0", "--port", "8000"]

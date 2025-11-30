@@ -14,7 +14,7 @@ uvicorn
 python-dotenv
 pydantic
 requests
-google-cloud-aiplatform
 aiohttp
-# ADK is installed separately from GitHub
+google-cloud-aiplatform
+
 
