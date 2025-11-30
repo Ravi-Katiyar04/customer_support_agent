@@ -2,6 +2,7 @@
 __pycache__/
 .env
 *.db
+/.env
 node_modules/
 dist/
 .vscode/

@@ -39,11 +39,12 @@ export default function Chat() {
     setTyping(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/message", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: sessionId, text }),
       });
+
 
       const data = await res.json();
       setTyping(false);

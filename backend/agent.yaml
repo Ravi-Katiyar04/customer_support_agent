@@ -1,0 +1,16 @@
+version: "0.1"
+
+agents:
+  - name: customer_support
+    entrypoint: agents:customer_support_agent
+    memory: true
+
+    tools:
+      - builtin:python
+      - builtin:code_execution
+      - builtin:google_search
+
+runtime:
+  server:
+    type: fastapi
+    entrypoint: main:app
