@@ -1,20 +1,26 @@
-services:
-  # FRONTEND - React Vite static build
-  - type: service
-    name: customer-support-frontend
+version: "1"
+
+instances:
+  # FRONTEND (Static Vite React)
+  - name: customer-support-frontend
     repo: https://github.com/Ravi-Katiyar04/customer_support_agent
     branch: main
-    buildCommand: cd frontend && npm install && npm run build
-    startCommand: npx serve -s frontend/dist -l 3000
+    plan: free
+    runtime: node
+    build:
+      command: cd frontend && npm install && npm run build
+    start:
+      command: npx serve -s frontend/dist -l 3000
     envVars:
       - key: VITE_API_URL
         sync: false
 
-  # BACKEND - FastAPI + ADK running in Docker
-  - type: service
-    name: customer-support-backend
+  # BACKEND (FastAPI + ADK via Docker)
+  - name: customer-support-backend
     repo: https://github.com/Ravi-Katiyar04/customer_support_agent
     branch: main
+    plan: free
+    runtime: docker
     dockerfilePath: backend/Dockerfile
     envVars:
       - key: DB_URL
