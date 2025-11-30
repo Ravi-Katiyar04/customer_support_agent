@@ -32,7 +32,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install ADK
-RUN pip install openai-adk
+RUN pip install git+https://github.com/openai/adk-python.git
+
 
 # Copy backend files
 COPY . .
