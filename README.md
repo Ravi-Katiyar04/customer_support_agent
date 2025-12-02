@@ -215,34 +215,14 @@ docker-compose up --build
 # - Frontend: http://localhost:3000 (if configured)
 ```
 
-### Option 3: Production Deployment
-
-#### Prerequisites
-- Kubernetes cluster OR managed container service (GCP Cloud Run, AWS ECS)
-- Secret manager (Google Secret Manager, AWS Secrets Manager)
-- Persistent database (PostgreSQL recommended over SQLite)
-
-#### Steps
-1. **Update `docker-compose.yml`** for your environment
-2. **Configure database**:
-   ```
-   SESSION_DB_URL=postgresql://user:pass@db-host:5432/esa_db
-   ```
-3. **Set secrets** in your platform's secret manager
-4. **Deploy containers** to your infrastructure
-5. **Configure HTTPS** with certificate manager
-6. **Set up monitoring** (logs, metrics, traces)
-
----
-
 ## 💬 Usage Guide
 
 ### Basic Customer Flow
 
 #### Scenario 1: Product Information Query
 ```
-Customer: "What's the price of the Dell XPS 15?"
-Agent: "The Dell XPS 15 is priced at $1,299 and we have 45 units in stock."
+Customer: "tell me about iphone 15 pro?"
+Agent: "The iPhone 15 Pro is $999, only 8 left, made of Titanium."
 ```
 
 #### Scenario 2: Small Refund (Auto-Approved)
